@@ -1,6 +1,4 @@
-import { Pensamento } from './../pensamento';
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-criar-pensamento',
@@ -9,9 +7,24 @@ import { CommonModule } from '@angular/common';
 })
 export class CriarPensamentoComponent implements OnInit {
 
+  pensamento = {
+    id: 0,
+    conteudo: '',
+    autoria: '',
+    modelo: 'modelo1'
+  }
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  criarPensamento() {
+    alert("Novo pensamento criado")
+  }
+
+  cancelar() {
+    alert("Ação cancelada")
   }
 
 }
