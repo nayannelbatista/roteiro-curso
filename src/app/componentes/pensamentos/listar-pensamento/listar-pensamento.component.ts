@@ -7,9 +7,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPensamentoComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  pensamento = {
+    id: 0,
+    conteudo: 'Angular é o melhor!',
+    autoria: 'Nay',
+    modelo: 'modelo1'
   }
 
+  listaPensamentos: any[] = [
+    {
+      id: 0,
+      conteudo: 'Diretiva *ngFor',
+      autoria: 'Angular',
+      modelo: 'modelo2'
+    },
+    {
+      id: 0,
+      conteudo: 'Aprendi na Alura',
+      autoria: 'Dev',
+      modelo: 'modelo3'
+    }
+  ];
+
+  constructor() { }
+
+  pensamentoPequeno = true;
+
+  ngOnInit(): void {
+    // this.listaPensamentos.forEach(element => {
+    //   if(element.conteudo.length >= 256){
+    //     this.pensamentoPequeno = !this.pensamentoPequeno
+    //   }
+    // });
+  }
+
+
+  // larguraPensamento(): any{
+  //   this.listaPensamentos.forEach(element => {
+  //     if(element.conteudo.length >= 256){
+  //       return 'pensamento-g'
+  //     }
+  //     return 'pensamento-p'
+  //   });
+  // }
+
+  larguraPensamento(): any{
+      if(this.pensamento.conteudo.length >= 256){
+        return 'pensamento-g'
+      }
+      return 'pensamento-p'
+    };
 }
+
