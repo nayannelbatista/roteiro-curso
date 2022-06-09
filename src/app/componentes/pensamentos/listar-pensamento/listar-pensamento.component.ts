@@ -1,3 +1,4 @@
+import { Pensamento } from './../pensamento';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPensamentoComponent implements OnInit {
 
-  pensamento = {
-    id: 0,
-    conteudo: 'Angular é o melhor!',
-    autoria: 'Nay',
-    modelo: 'modelo1'
-  }
+  // pensamento: Pensamento = {
+  //   id: 0,
+  //   conteudo: 'Angular é o melhor!',
+  //   autoria: 'Nay',
+  //   modelo: 'modelo1'
+  // }
+
+  pensamento?: Pensamento;
 
   listaPensamentos: any[] = [
     {
@@ -31,7 +34,7 @@ export class ListarPensamentoComponent implements OnInit {
 
   constructor() { }
 
-  pensamentoPequeno = true;
+  //pensamentoPequeno = true;
 
   ngOnInit(): void {
     // this.listaPensamentos.forEach(element => {
@@ -52,7 +55,7 @@ export class ListarPensamentoComponent implements OnInit {
   // }
 
   larguraPensamento(): any{
-      if(this.pensamento.conteudo.length >= 256){
+      if(this.pensamento && this.pensamento.conteudo.length >= 256){
         return 'pensamento-g'
       }
       return 'pensamento-p'
