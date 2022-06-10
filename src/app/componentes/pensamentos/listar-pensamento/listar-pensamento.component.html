@@ -8,11 +8,9 @@
     </button>
   </header>
   <div class="mural" *ngIf="listaPensamentos.length > 0; else semPensamentos">
-    <div
-      class="pensamento {{ pensamento.modelo }} ff-roboto-mono"
-      [ngClass]="larguraPensamento()"
-      *ngFor="let pensamento of listaPensamentos"
-      >
+    <div class="pensamento {{ pensamento.modelo }} ff-roboto-mono pensamento-p"
+        [ngClass]="larguraPensamento()"
+        *ngFor="let pensamento of listaPensamentos">
       <img src="/assets/imagens/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
       <p class="conteudo">{{ pensamento.conteudo }}</p>
       <p class="autoria">{{ pensamento.autoria }}</p>
@@ -20,7 +18,7 @@
         <button class="botao-editar">
           <img src="/assets/imagens/icone-editar.png" alt="Ícone de editar">
         </button>
-        <button class="botao-excluir">
+        <button class="botao-excluir" routerLink="/pensamentos/excluirPensamento/{{pensamento.id}}">
           <img src="/assets/imagens/icone-lixeira.png" alt="Ícone de excluir">
         </button>
       </div>

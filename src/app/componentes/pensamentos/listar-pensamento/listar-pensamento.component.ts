@@ -1,5 +1,6 @@
 import { Pensamento } from './../pensamento';
 import { Component, OnInit } from '@angular/core';
+import { PensamentoService } from '../pensamento.service';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -8,57 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPensamentoComponent implements OnInit {
 
-  // pensamento: Pensamento = {
-  //   id: 0,
-  //   conteudo: 'Angular é o melhor!',
-  //   autoria: 'Nay',
-  //   modelo: 'modelo1'
-  // }
-
   pensamento?: Pensamento;
+  listaPensamentos: Pensamento[] = [];
 
-  listaPensamentos: any[] = [
-    {
-      id: 0,
-      conteudo: 'Diretiva *ngFor',
-      autoria: 'Angular',
-      modelo: 'modelo2'
-    },
-    {
-      id: 0,
-      conteudo: 'Aprendi na Alura',
-      autoria: 'Dev',
-      modelo: 'modelo3'
-    }
-  ];
-
-  constructor() { }
-
-  //pensamentoPequeno = true;
+  constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
-    // this.listaPensamentos.forEach(element => {
-    //   if(element.conteudo.length >= 256){
-    //     this.pensamentoPequeno = !this.pensamentoPequeno
-    //   }
-    // });
+    this.service.listar().subscribe((listaPensamentos) => {
+      this.listaPensamentos = listaPensamentos;
+    })
   }
 
-
-  // larguraPensamento(): any{
-  //   this.listaPensamentos.forEach(element => {
-  //     if(element.conteudo.length >= 256){
-  //       return 'pensamento-g'
-  //     }
-  //     return 'pensamento-p'
-  //   });
-  // }
-
   larguraPensamento(): any{
-      if(this.pensamento && this.pensamento.conteudo.length >= 256){
+    this.listaPensamentos.forEach(element => {
+      if(element.conteudo.length >= 256){
         return 'pensamento-g'
       }
       return 'pensamento-p'
-    };
+    });
+  }
 }
 
