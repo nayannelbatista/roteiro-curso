@@ -9,13 +9,6 @@ import { PensamentoService } from '../pensamento.service';
 })
 export class ListarPensamentoComponent implements OnInit {
 
-  pensamento: Pensamento = {
-    id: 0,
-    conteudo: '',
-    autoria: '',
-    modelo: ''
-  }
-
   listaPensamentos: Pensamento[] = [];
 
   constructor(private service: PensamentoService) { }
@@ -24,15 +17,6 @@ export class ListarPensamentoComponent implements OnInit {
     this.service.listar().subscribe((listaPensamentos) => {
       this.listaPensamentos = listaPensamentos;
     })
-  }
-
-  larguraPensamento(): any{
-    this.listaPensamentos.forEach(element => {
-      if(element.conteudo.length >= 256){
-        return 'pensamento-g'
-      }
-      return 'pensamento-p'
-    });
   }
 }
 
