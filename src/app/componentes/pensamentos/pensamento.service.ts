@@ -21,6 +21,11 @@ export class PensamentoService {
     return this.http.post<Pensamento>(this.API, pensamento)
   }
 
+  editar(pensamento: Pensamento): Observable<Pensamento> {
+    const api = `${this.API}/${pensamento.id}`;
+    return this.http.put<Pensamento>(api, pensamento);
+  }
+
   excluir(id: number): Observable<Pensamento> {
     const api = `${this.API}/${id}`;
     return this.http.delete<Pensamento>(api);

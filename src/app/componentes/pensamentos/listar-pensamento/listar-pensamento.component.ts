@@ -9,7 +9,13 @@ import { PensamentoService } from '../pensamento.service';
 })
 export class ListarPensamentoComponent implements OnInit {
 
-  pensamento?: Pensamento;
+  pensamento: Pensamento = {
+    id: 0,
+    conteudo: '',
+    autoria: '',
+    modelo: ''
+  }
+
   listaPensamentos: Pensamento[] = [];
 
   constructor(private service: PensamentoService) { }
